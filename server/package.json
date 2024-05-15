@@ -1,0 +1,19 @@
+{
+  "name": "remixjs-todo-server",
+  "version": "1.0.0",
+  "description": "Project laboratory with RemixJS - Backend side.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alchiment/remixjs-todo.git"
+  },
+  "author": "Richard Rivas M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alchiment/remixjs-todo/issues"
+  },
+  "homepage": "https://github.com/Alchiment/remixjs-todo#readme"
+}
