@@ -1,0 +1,58 @@
+enum UserType {
+    provider,
+    client
+}
+
+type Query {
+    users: [User]
+    user(id: String!): User
+}
+
+type Mutation {
+    createUser(input: UserInput!): User
+    updateUser(input: UserInput!): User
+}
+
+type User {
+    _id: ID!
+    firstName: String
+    lastName: String
+    email: String
+    identification: String
+    identification_type: String
+    type: [UserType]
+    mobile: String
+    address: UserAddress
+    password: String
+}
+
+type UserAddress {
+    address: String
+    city: String
+    department: String
+    country: String
+    zipCode: String
+}
+
+# Inputs
+
+input UserInput {
+    _id: ID
+    firstName: String!
+    lastName: String!
+    email: String!
+    identification: String!
+    identification_type: String!
+    type: [UserType]
+    mobile: String
+    address: UserAddressInput
+    password: String!
+}
+
+input UserAddressInput {
+    address: String
+    city: String
+    department: String
+    country: String
+    zipCode: String
+}
