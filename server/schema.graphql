@@ -6,13 +6,20 @@ enum UserType {
 type Query {
     users: [User]
     user(id: String!): User
+    todos: [Todo]
+    todo(id: String!): Todo
 }
 
 type Mutation {
     createUser(input: UserInput!): User
     updateUser(input: UserInput!): User
+    createTodo(input: TodoInput!): Todo
+    updateTodo(input: TodoInput!): Todo
+    deleteTodo(id: String!): String
+    destroyTodo(id: String!): String
 }
 
+# types
 type User {
     _id: ID!
     firstName: String
@@ -34,6 +41,15 @@ type UserAddress {
     zipCode: String
 }
 
+type Todo {
+    _id: ID!
+    title: String
+    description: String
+    completed: Boolean
+    isDeleted: Boolean
+    user: User!
+}
+
 # Inputs
 
 input UserInput {
@@ -46,7 +62,7 @@ input UserInput {
     type: [UserType]
     mobile: String
     address: UserAddressInput
-    password: String!
+    password: String
 }
 
 input UserAddressInput {
@@ -55,4 +71,13 @@ input UserAddressInput {
     department: String
     country: String
     zipCode: String
+}
+
+input TodoInput {
+    _id: ID
+    title: String!
+    description: String
+    completed: Boolean
+    isDeleted: Boolean
+    user: UserInput!
 }
