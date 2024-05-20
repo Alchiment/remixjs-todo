@@ -1,0 +1,8 @@
+const database = 'remixjs_lab';
+const collection = 'users';
+
+// Create a new database.
+use(database);
+
+// Create a new collection.
+db.createCollection(collection);

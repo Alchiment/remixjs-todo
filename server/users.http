@@ -1,0 +1,7 @@
+POST http://localhost:7000/api/auth/login
+content-type: application/json
+
+{
+    "email": "test@test.co",
+    "password": ""
+}
