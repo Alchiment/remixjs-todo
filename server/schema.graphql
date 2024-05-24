@@ -15,6 +15,7 @@ type Mutation {
     updateUser(input: UserInput!): User
     createTodo(input: TodoInput!): Todo
     updateTodo(input: TodoInput!): Todo
+    restoreTodo(id: String!): String
     deleteTodo(id: String!): String
     destroyTodo(id: String!): String
 }
@@ -79,5 +80,4 @@ input TodoInput {
     description: String
     completed: Boolean
     isDeleted: Boolean
-    user: UserInput!
 }

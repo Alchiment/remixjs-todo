@@ -8,23 +8,35 @@ export const todoUpdateMutation = gql`
             description
             completed
             isDeleted
-            user {
-                _id
-                firstName
-                lastName
-                email
-                identification
-                identification_type
-                type
-                mobile
-                address {
-                    address
-                    city
-                    department
-                    country
-                    zipCode
-                }
-            }
         }
     }  
+`;
+
+export const todoCreateMutation = gql`
+    mutation CreateTodo($input: TodoInput!) {
+        createTodo(input: $input) {
+            _id
+            title
+            description
+            completed
+        }
+    }
+`;
+
+export const todoDeleteMutation = gql`
+    mutation DeleteTodo($deleteTodoId: String!) {
+        deleteTodo(id: $deleteTodoId)
+    }
+`;
+
+export const todoDestroyMutation = gql`
+    mutation DestroyTodo($destroyTodoId: String!) {
+        destroyTodo(id: $destroyTodoId)
+    }
+`;
+
+export const todoRestoreMutation = gql`
+    mutation RestoreTodo($restoreTodoId: String!) {
+        restoreTodo(id: $restoreTodoId)
+    }
 `;

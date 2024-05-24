@@ -3,7 +3,7 @@ import {mutationCreateUser, mutationUpdateUser} from "./src/graphql/resolvers/mu
 import {queryGetTodoById, queryGetTodos} from "./src/graphql/resolvers/queries/todo.query.js";
 import {
     mutationCreateTodo,
-    mutationDeleteTodo, mutationDestroyTodo,
+    mutationDeleteTodo, mutationDestroyTodo, mutationRestoreTodo,
     mutationUpdateTodo
 } from "./src/graphql/resolvers/mutations/todo.mutation.js";
 
@@ -19,6 +19,7 @@ export const resolvers = {
         updateUser: mutationUpdateUser,
         createTodo: mutationCreateTodo,
         updateTodo: mutationUpdateTodo,
+        restoreTodo: mutationRestoreTodo,
         deleteTodo: mutationDeleteTodo,
         destroyTodo: mutationDestroyTodo,
     }

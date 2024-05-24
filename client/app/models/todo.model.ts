@@ -25,4 +25,14 @@ export class TodoModel implements TodoInterface {
         this.isDeleted = !!todo?.isDeleted;
         this.user = new UserModel(todo?.user);
     }
+
+    public mapToSave() {
+        return {
+            _id: this._id,
+            title: this.title,
+            description: this.description,
+            completed: this.completed,
+            isDeleted: this.isDeleted,
+        };
+    }
 }
