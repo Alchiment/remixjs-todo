@@ -27,17 +27,17 @@ export async function createTodo(inputData) {
     };
 }
 
-export async function updateTodoById({id, inputData}) {
+export async function updateTodoById(inputData) {
     const conn = await dbConn.getConnection();
-    const dataRequest = inputData;
+    const dataRequest = {...inputData};
     delete dataRequest._id;
     await conn.collection('todos').updateOne({
-        "_id": new ObjectId(id)
+        "_id": new ObjectId(inputData._id)
     }, {
         $set: dataRequest
     });
     return {
-        _id: id,
+        _id: inputData._id,
         ...dataRequest,
     };
 }

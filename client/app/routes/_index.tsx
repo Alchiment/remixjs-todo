@@ -1,4 +1,8 @@
-import type { MetaFunction } from "@remix-run/node";
+import type {LoaderFunctionArgs, MetaFunction} from "@remix-run/node";
+import {UserSessionInterface} from "~/models/user-session.model";
+import {useLoaderData} from "@remix-run/react";
+import {useEffect} from "react";
+import {getUserDetailFromSession} from "~/utils/auth/session";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,7 +11,20 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  return await getUserDetailFromSession(request);
+}
+
 export default function Index() {
+  const userSession: UserSessionInterface = useLoaderData();
+
+
+  useEffect(() => {
+    if (userSession?.token) {
+      localStorage.setItem('token', userSession.token);
+    }
+  }, []);
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>

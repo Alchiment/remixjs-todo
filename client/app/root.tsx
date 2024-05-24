@@ -11,15 +11,17 @@ import RootLayout from "~/layouts/_root.layout";
 import {ReactNode} from "react";
 import {LinksFunction} from "@remix-run/node";
 import bootstrapCSS from "bootstrap/dist/css/bootstrap.min.css?url";
-import rootStyles from '~/styles/root.css?url';
 import bootstrapIconsCSS from "bootstrap-icons/font/bootstrap-icons.css?url";
+import rootStyles from '~/styles/root.css?url';
+import checkboxStyles from '~/styles/components/checkboxes.css?url';
 
 export const links: LinksFunction = () => {
     const bootstrapStyles = {rel: 'stylesheet', href: bootstrapCSS};
     const bootstrapIconStyles = {rel: 'stylesheet', href: bootstrapIconsCSS};
     const rootLabStyles = {rel: 'stylesheet', href: rootStyles};
+    const checkboxLabStyles = {rel: 'stylesheet', href: checkboxStyles};
 
-    return [bootstrapStyles, rootLabStyles, bootstrapIconStyles];
+    return [bootstrapStyles, rootLabStyles, bootstrapIconStyles, checkboxLabStyles];
 };
 
 export function Layout({ children }: { children: ReactNode }) {
