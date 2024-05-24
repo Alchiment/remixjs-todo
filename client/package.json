@@ -23,10 +23,13 @@
   },
   "homepage": "https://github.com/Alchiment/remixjs-todo#readme",
   "dependencies": {
+    "@apollo/client": "^3.10.4",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "graphql": "^16.8.1",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",

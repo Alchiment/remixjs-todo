@@ -5,14 +5,33 @@
  */
 
 import { RemixBrowser } from "@remix-run/react";
-import { startTransition, StrictMode } from "react";
-import { hydrateRoot } from "react-dom/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, ApolloLink, concat } from "@apollo/client/index.js";
+import {hydrateRoot} from "react-dom/client";
 
-startTransition(() => {
-  hydrateRoot(
-    document,
-    <StrictMode>
-      <RemixBrowser />
-    </StrictMode>
-  );
-});
+function Client() {
+
+    const httpLink = createHttpLink({ uri: 'http://localhost:7000/graphql' });
+    const authLink = new ApolloLink((operation, forward) => {
+        const accessToken = localStorage.getItem('token');
+        if (accessToken) {
+            operation.setContext({
+                headers: { 'Authorization': `Bearer ${accessToken}` },
+            });
+        }
+        return forward(operation);
+    });
+
+    const client = new ApolloClient({
+        // @ts-ignore
+        cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+        link: concat(authLink, httpLink),
+    });
+
+    return (
+        <ApolloProvider client={client}>
+            <RemixBrowser />
+        </ApolloProvider>
+    );
+}
+
+hydrateRoot(document, <Client />);

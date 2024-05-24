@@ -9,6 +9,18 @@ import {
 import {ToastNotificationProvider} from "~/contexts/ToastNotificationContext";
 import RootLayout from "~/layouts/_root.layout";
 import {ReactNode} from "react";
+import {LinksFunction} from "@remix-run/node";
+import bootstrapCSS from "bootstrap/dist/css/bootstrap.min.css?url";
+import rootStyles from '~/styles/root.css?url';
+import bootstrapIconsCSS from "bootstrap-icons/font/bootstrap-icons.css?url";
+
+export const links: LinksFunction = () => {
+    const bootstrapStyles = {rel: 'stylesheet', href: bootstrapCSS};
+    const bootstrapIconStyles = {rel: 'stylesheet', href: bootstrapIconsCSS};
+    const rootLabStyles = {rel: 'stylesheet', href: rootStyles};
+
+    return [bootstrapStyles, rootLabStyles, bootstrapIconStyles];
+};
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
